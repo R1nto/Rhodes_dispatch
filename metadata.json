@@ -1,0 +1,7 @@
+{
+  "name": "RHODES DISPATCH — Tactical Sci-Fi Ticketing Terminal",
+  "description": "Tactical sci-fi event ticketing platform for gaming, anime, and cosplay conventions with real sorting and searching algorithms, live system logs, and Supabase database architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

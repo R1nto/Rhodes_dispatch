@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #090D12;
+    --panel-main: #121721;
+    --panel-subtle: #171F2C;
+    --panel-header: #0E131B;
+    --border-main: #263345;
+    --border-subtle: #1C2533;
+    
+    /* Authentic Arknights Accents */
+    --arknights-cyan: #00F0FF;
+    --arknights-cyan-dim: rgba(0, 240, 255, 0.15);
+    --arknights-amber: #FFB300;
+    --arknights-amber-dim: rgba(255, 179, 0, 0.15);
+    
+    --text-primary: #EEF2F6;
+    --text-secondary: #90A0B7;
+    --text-muted: #57687E;
+    --status-success: #00E676;
+    --status-error: #FF5252;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace, ui-monospace;
+  }
+}
+
+/* Tactical scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #090D12;
+}
+::-webkit-scrollbar-thumb {
+  background: #263345;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00F0FF;
+}
+
+/* Arknights Chamfer & Radar Animations */
+@keyframes radar-sweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 1.6s ease-in-out infinite;
+}
+
+@keyframes tactical-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-tactical-pulse {
+  animation: tactical-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Subtle tactical grid background pattern */
+.bg-tactical-grid {
+  background-image: linear-gradient(to right, rgba(38, 51, 69, 0.25) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(38, 51, 69, 0.25) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
