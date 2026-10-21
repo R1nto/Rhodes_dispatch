@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="18" fill="#224248"></rect>
+
+  <polygon points="50,4 92,26 92,74 50,96 8,74 8,26" stroke="#44A1A4" stroke-width="3.5" fill="#274A52"></polygon>
+
+  <polygon points="50,10 86,29 86,71 50,90 14,71 14,29" stroke="#547980" stroke-width="1.5" fill="#274A52"></polygon>
+
+  <path d="M32 30 H40 V36 H46 V30 H54 V36 H60 V30 H68 V42 H64 L60 74 H40 L36 42 H32 Z" fill="#224248" stroke="#F2542D" stroke-width="2"></path>
+
+  <path d="M48 42 H52 V50 H60 V54 H52 V66 H48 V54 H40 V50 H48 Z" fill="#FFB81C"></path>
+
+  <polygon points="50,22 55,28 50,34 45,28" fill="#F2542D"></polygon>
+
+  <line x1="20" y1="26" x2="28" y2="26" stroke="#FFB81C" stroke-width="2.5" stroke-linecap="round"></line>
+
+  <line x1="72" y1="74" x2="80" y2="74" stroke="#F2542D" stroke-width="2.5" stroke-linecap="round"></line>
+
+  <circle cx="50" cy="82" r="2" fill="#2BB673"></circle>
+  <circle cx="43" cy="82" r="1.5" fill="#91B5B3"></circle>
+  <circle cx="57" cy="82" r="1.5" fill="#91B5B3"></circle>
+</svg>

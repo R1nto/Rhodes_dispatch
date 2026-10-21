@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-head: var(--head);
+  --color-soft: var(--soft);
+  --color-softer: var(--softer);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink2: var(--ink2);
+  --color-ink3: var(--ink3);
+  --color-muted: var(--muted);
+  --color-line2: var(--line2);
+  --color-coral-ink: var(--coral-ink);
+  --color-amber-ink: var(--amber-ink);
+  --color-green-ink: var(--green-ink);
+  --color-red-ink: var(--red-ink);
+  --color-amber-ink2: var(--amber-ink2);
+  --color-blue-ink: var(--blue-ink);
+  --color-coral-tint: var(--coral-tint);
+  --color-yellow-tint: var(--yellow-tint);
+  --color-green-tint: var(--green-tint);
+  --color-red-tint: var(--red-tint);
+  --color-blue-tint: var(--blue-tint);
+  --color-pink-tint: var(--pink-tint);
+  --color-purple-tint: var(--purple-tint);
+  --color-teal-tint: var(--teal-tint);
+  --color-coral-edge: var(--coral-edge);
+  --color-yellow-edge: var(--yellow-edge);
+  --color-green-edge: var(--green-edge);
+  --color-blue-edge: var(--blue-edge);
+  --color-pink-edge: var(--pink-edge);
+  --color-purple-edge: var(--purple-edge);
+  --color-teal-edge: var(--teal-edge);
+  --color-coral-ink2: var(--coral-ink2);
+  --color-pink-ink: var(--pink-ink);
+  --color-purple-ink: var(--purple-ink);
+  --color-teal-ink: var(--teal-ink);
+}
+
+:root {
+  /* LIGHT MODE */
+  --paper: #F3F8F7;
+  --card: #FFFFFF;
+  --head: #E3F0EE;
+  --soft: #EBF5F3;
+  --softer: #F7FAF9;
+
+  --line: #C9DEDB;
+  --line2: #B3D2CE;
+
+  --ink: #224248;
+  --ink2: #325E6A;
+  --ink3: #537B80;
+  --muted: #6F9294;
+
+  --coral-ink: #287F83;
+  --coral-ink2: #236D72;
+
+  --amber-ink: #8A6500;
+  --amber-ink2: #765600;
+  --green-ink: #17764B;
+  --red-ink: #B42323;
+  --blue-ink: #245E84;
+  --pink-ink: #B02A68;
+  --purple-ink: #6537A8;
+  --teal-ink: #247B78;
+
+  --coral-tint: #DDF2F0;
+  --yellow-tint: #FAF7BB;
+  --green-tint: #DEF3E7;
+  --red-tint: #FDE6E4;
+  --blue-tint: #E1EEF6;
+  --pink-tint: #FCE5EE;
+  --purple-tint: #EEE7F9;
+  --teal-tint: #DDF3EF;
+
+  --coral-edge: #A6D7D4;
+  --yellow-edge: #E5DFA0;
+  --green-edge: #A9DFC2;
+  --blue-edge: #B3D2E6;
+  --pink-edge: #F0B9D0;
+  --purple-edge: #CDB8EE;
+  --teal-edge: #A5DEDB;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  /* DARK MODE */
+  --paper: #224248;
+  --card: #325E6A;
+  --head: #2D535D;
+  --soft: #2A5058;
+  --softer: #274A52;
+
+  --line: #42666F;
+  --line2: #547980;
+
+  --ink: #FAF7BB;
+  --ink2: #D7E7DF;
+  --ink3: #AEC8C4;
+  --muted: #91B5B3;
+
+  --coral-ink: #44A1A4;
+  --coral-ink2: #5BB7B8;
+
+  --amber-ink: #FAF7BB;
+  --amber-ink2: #FAF7BB;
+  --green-ink: #7DE0B0;
+  --red-ink: #FFAAA7;
+  --blue-ink: #9AD9EB;
+  --pink-ink: #FF9CC6;
+  --purple-ink: #C7A8FF;
+  --teal-ink: #6DDAD5;
+
+  --coral-tint: #2D5960;
+  --yellow-tint: #514F32;
+  --green-tint: #254C41;
+  --red-tint: #503536;
+  --blue-tint: #294D60;
+  --pink-tint: #4A3043;
+  --purple-tint: #3D3457;
+  --teal-tint: #264F50;
+
+  --coral-edge: #477F83;
+  --yellow-edge: #777348;
+  --green-edge: #417B65;
+  --blue-edge: #456C80;
+  --pink-edge: #7A4A65;
+  --purple-edge: #5A4690;
+  --teal-edge: #3D7D7A;
+
+  color-scheme: dark;
+}
+@layer base {
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Baloo 2', 'Nunito', sans-serif;
+    letter-spacing: 0;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace, ui-monospace;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand); }
+
+/* Arknights Chamfer & Radar Animations */
+@keyframes radar-sweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 1.6s ease-in-out infinite;
+}
+
+@keyframes tactical-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-tactical-pulse {
+  animation: tactical-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Subtle tactical grid background pattern */
+.bg-tactical-grid {
+  background-image: radial-gradient(color-mix(in srgb, var(--line) 55%, transparent) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
