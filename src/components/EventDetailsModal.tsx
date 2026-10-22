@@ -35,7 +35,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
   });
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-scrim backdrop-blur-md animate-fade-in">
       <div 
         className="bg-card border border-line rounded-2xl max-w-2xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl"
         onClick={(e) => e.stopPropagation()}
@@ -43,7 +43,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
         {/* Menu: Header Modal */}
         <div className="bg-head px-6 py-4 border-b border-line flex items-center justify-between shrink-0">
           <div className="flex items-center space-x-3">
-            <span className="font-sans text-xs text-coral-ink px-2.5 py-0.5 rounded bg-paper border border-line font-bold">
+            <span className="font-sans text-xs text-accent-ink px-2.5 py-0.5 rounded bg-paper border border-line font-bold">
               {event.event_code}
             </span>
             <span className="text-xs font-sans text-ink2">
@@ -70,7 +70,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
             />
             <div className="absolute inset-0 bg-gradient-to-t from-head via-transparent to-transparent" />
             <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-              <span className="text-xs font-sans px-3 py-1 rounded-full bg-card/90 backdrop-blur-md text-coral-ink border border-[#F2542D]/30 font-bold">
+              <span className="text-xs font-sans px-3 py-1 rounded-full bg-card/90 backdrop-blur-md text-accent-ink border border-primary/30 font-bold">
                 {event.category.toUpperCase()}
               </span>
               <span className="text-xs font-sans px-3 py-1 rounded-full bg-card/90 backdrop-blur-md text-green-ink border border-[#2BB673]/30 font-bold">
@@ -87,7 +87,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
               <div className="p-3 rounded-xl bg-head border border-line flex items-center space-x-3">
-                <Calendar className="w-4 h-4 text-coral-ink shrink-0" />
+                <Calendar className="w-4 h-4 text-accent-ink shrink-0" />
                 <div>
                   <span className="text-[10px] font-sans text-muted block">WAKTU PELAKSANAAN</span>
                   <span className="text-ink font-medium block">{formattedStartDate}</span>
@@ -109,7 +109,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
           {/* Menu: Deskripsi & Fasilitas Acara */}
           <div className="space-y-3">
             <div className="flex items-center justify-between border-b border-line pb-2">
-              <h4 className="text-xs font-sans text-coral-ink font-bold">
+              <h4 className="text-xs font-sans text-accent-ink font-bold">
                 TENTANG ACARA INI
               </h4>
               <span className="text-[10px] font-sans text-green-ink bg-green-tint px-2 py-0.5 rounded border border-emerald-500/30">
@@ -133,7 +133,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
               </div>
 
               <div className="p-3.5 rounded-xl bg-paper border border-line space-y-1.5 text-xs">
-                <span className="text-[10px] font-sans text-coral-ink font-bold block">
+                <span className="text-[10px] font-sans text-accent-ink font-bold block">
                   FASILITAS DI DALAM VENUE
                 </span>
                 <ul className="text-[11px] text-ink2 space-y-1">
@@ -149,7 +149,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <h4 className="text-xs font-sans text-ink font-bold flex items-center space-x-1.5">
-                <Tag className="w-3.5 h-3.5 text-coral-ink" />
+                <Tag className="w-3.5 h-3.5 text-accent-ink" />
                 <span>KATEGORI TIKET TERSEDIA</span>
               </h4>
               <span className="text-xs text-ink2 font-sans">
@@ -166,7 +166,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
                   return (
                     <div 
                       key={tier.id}
-                      className="p-4 rounded-xl bg-head border border-line hover:border-[#F2542D]/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-md"
+                      className="p-4 rounded-xl bg-head border border-line hover:border-primary/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-md"
                     >
                       <div className="space-y-1.5 flex-1">
                         <div className="flex items-center space-x-2">
@@ -176,7 +176,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
                           <span className={`text-[10px] font-sans px-2.5 py-0.5 rounded-full ${
                             isSoldOut 
                               ? 'bg-red-tint text-red-ink border border-rose-500/30' 
-                              : 'bg-card text-coral-ink border border-[#F2542D]/30'
+                              : 'bg-card text-accent-ink border border-primary/30'
                           }`}>
                             {remainingQuota} tiket tersisa
                           </span>
@@ -211,7 +211,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
                           className={`px-5 py-2.5 rounded-xl text-xs font-bold  transition-all ${
                             isSoldOut
                               ? 'bg-card text-muted border border-line cursor-not-allowed'
-                              : 'bg-[#F2542D] text-white hover:bg-[#FF6A3D] shadow-[0_4px_20px_rgba(242,84,45,0.25)] hover:scale-102'
+                              : 'bg-primary text-on-primary hover:bg-primary-hover shadow-[0_4px_20px_rgba(68,161,164,0.25)] hover:scale-102'
                           }`}
                         >
                           {isSoldOut ? 'Tiket Habis' : 'Pesan Sekarang'}

@@ -139,7 +139,7 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-scrim backdrop-blur-md animate-fade-in">
       <div 
         className="bg-card border border-line rounded-2xl max-w-lg w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl"
         onClick={(e) => e.stopPropagation()}
@@ -173,7 +173,7 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
                 <img src={event.poster_url} alt="" className="w-full h-full object-cover" />
               </div>
               <div className="min-w-0 flex-1 space-y-1">
-                <div className="flex items-center space-x-2 font-sans text-[11px] text-coral-ink font-semibold">
+                <div className="flex items-center space-x-2 font-sans text-[11px] text-accent-ink font-semibold">
                   <span>{event.event_code}</span>
                   <span>•</span>
                   <span className="text-amber-ink">{ticketType.name}</span>
@@ -223,7 +223,7 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
                 required
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-paper border border-line focus:border-[#F2542D] rounded-xl text-xs text-ink outline-none font-medium transition-colors"
+                className="w-full px-3.5 py-2.5 bg-paper border border-line focus:border-primary rounded-xl text-xs text-ink outline-none font-medium transition-colors"
                 placeholder="Nama lengkap pemegang tiket"
               />
             </div>
@@ -238,7 +238,7 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
                   required
                   value={customerEmail}
                   onChange={(e) => setCustomerEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-paper border border-line focus:border-[#F2542D] rounded-xl text-xs text-ink outline-none font-medium transition-colors"
+                  className="w-full px-3.5 py-2.5 bg-paper border border-line focus:border-primary rounded-xl text-xs text-ink outline-none font-medium transition-colors"
                   placeholder="email@domain.com"
                 />
               </div>
@@ -252,7 +252,7 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
                   required
                   value={customerPhone}
                   onChange={(e) => setCustomerPhone(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-paper border border-line focus:border-[#F2542D] rounded-xl text-xs text-ink outline-none font-medium transition-colors"
+                  className="w-full px-3.5 py-2.5 bg-paper border border-line focus:border-primary rounded-xl text-xs text-ink outline-none font-medium transition-colors"
                   placeholder="0812xxxxxxxx"
                 />
               </div>
@@ -303,7 +303,7 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
                 onClick={() => setPaymentMethod('qris')}
                 className={`p-3 rounded-xl border flex flex-col items-center justify-center text-center space-y-1.5 transition-all ${
                   paymentMethod === 'qris'
-                    ? 'border-[#F2542D] bg-[#F2542D]/10 text-coral-ink shadow-[0_4px_15px_rgba(242,84,45,0.15)] font-bold'
+                    ? 'border-primary bg-primary/10 text-accent-ink shadow-[0_4px_15px_rgba(68,161,164,0.15)] font-bold'
                     : 'border-line bg-paper text-ink2 hover:border-line/80'
                 }`}
               >
@@ -316,7 +316,7 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
                 onClick={() => setPaymentMethod('va')}
                 className={`p-3 rounded-xl border flex flex-col items-center justify-center text-center space-y-1.5 transition-all ${
                   paymentMethod === 'va'
-                    ? 'border-[#F2542D] bg-[#F2542D]/10 text-coral-ink shadow-[0_4px_15px_rgba(242,84,45,0.15)] font-bold'
+                    ? 'border-primary bg-primary/10 text-accent-ink shadow-[0_4px_15px_rgba(68,161,164,0.15)] font-bold'
                     : 'border-line bg-paper text-ink2 hover:border-line/80'
                 }`}
               >
@@ -329,7 +329,7 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
                 onClick={() => setPaymentMethod('card')}
                 className={`p-3 rounded-xl border flex flex-col items-center justify-center text-center space-y-1.5 transition-all ${
                   paymentMethod === 'card'
-                    ? 'border-[#F2542D] bg-[#F2542D]/10 text-coral-ink shadow-[0_4px_15px_rgba(242,84,45,0.15)] font-bold'
+                    ? 'border-primary bg-primary/10 text-accent-ink shadow-[0_4px_15px_rgba(68,161,164,0.15)] font-bold'
                     : 'border-line bg-paper text-ink2 hover:border-line/80'
                 }`}
               >
@@ -340,9 +340,9 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
 
             {/* Menu: Tampilan QRIS Live */}
             {paymentMethod === 'qris' && (
-              <div className="p-4 rounded-xl bg-paper border border-[#F2542D]/30 flex flex-col items-center justify-center text-center space-y-2.5">
+              <div className="p-4 rounded-xl bg-paper border border-primary/30 flex flex-col items-center justify-center text-center space-y-2.5">
                 <div className="flex items-center space-x-2">
-                  <span className="text-[10px] font-sans text-coral-ink font-bold">
+                  <span className="text-[10px] font-sans text-accent-ink font-bold">
                     SCAN QRIS PEMBAYARAN LANGSUNG
                   </span>
                   <span className="w-2 h-2 rounded-full bg-[#2BB673] animate-pulse" />
@@ -381,9 +381,9 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
               <div className="p-3.5 rounded-xl bg-paper border border-line space-y-2 text-xs">
                 <div className="flex justify-between items-center text-[10px] font-sans text-ink2">
                   <span>NOMOR VIRTUAL ACCOUNT BCA</span>
-                  <span className="text-coral-ink">OTOMATIS DICEK</span>
+                  <span className="text-accent-ink">OTOMATIS DICEK</span>
                 </div>
-                <div className="font-sans text-sm font-bold text-coral-ink select-all">
+                <div className="font-sans text-sm font-bold text-accent-ink select-all">
                   8841 0812 9901 2245
                 </div>
                 <p className="text-[10px] text-muted">
@@ -424,7 +424,7 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
               id="agree"
               checked={agreed}
               onChange={(e) => setAgreed(e.target.checked)}
-              className="mt-0.5 accent-[#F2542D] rounded cursor-pointer"
+              className="mt-0.5 accent-primary rounded cursor-pointer"
             />
             <label htmlFor="agree" className="text-[11px] text-ink2 cursor-pointer leading-tight">
               Saya menyetujui Syarat &amp; Ketentuan pembelian tiket dan menyatakan data identitas pemesan adalah sah.
@@ -443,7 +443,7 @@ const BookingModalContent: React.FC<BookingModalContentProps> = ({
             <button
               type="submit"
               disabled={isSubmitting || remainingQuota <= 0 || !agreed}
-              className="w-full py-3.5 px-4 rounded-xl bg-[#F2542D] hover:bg-[#FF6A3D] text-white font-black text-xs transition-all shadow-[0_4px_25px_rgba(242,84,45,0.3)] disabled:opacity-50 disabled:cursor-not-allowed hover:scale-101"
+              className="w-full py-3.5 px-4 rounded-xl bg-primary hover:bg-primary-hover text-on-primary font-black text-xs transition-all shadow-[0_4px_25px_rgba(68,161,164,0.3)] disabled:opacity-50 disabled:cursor-not-allowed hover:scale-101"
             >
               {isSubmitting ? (
                 <span>MEMVERIFIKASI PEMBAYARAN...</span>

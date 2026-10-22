@@ -106,11 +106,11 @@ export const EventFormModal: React.FC<Props> = ({ event, existingCodes, onClose,
   };
 
   const field =
-    'w-full px-3 py-2 bg-paper border border-line focus:border-[#F2542D] rounded-xl text-sm text-ink outline-none transition-colors placeholder:text-muted';
+    'w-full px-3 py-2 bg-paper border border-line focus:border-primary rounded-xl text-sm text-ink outline-none transition-colors placeholder:text-muted';
   const label = 'block text-xs text-ink2 mb-1 font-semibold';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-scrim backdrop-blur-md animate-fade-in">
       <div className="bg-card border border-line rounded-2xl max-w-2xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl">
         <div className="bg-head px-6 py-4 border-b border-line flex items-center justify-between shrink-0">
           <span className="font-extrabold text-sm text-ink">{isEdit ? 'Ubah Acara' : 'Tambah Acara Baru'}</span>
@@ -184,7 +184,7 @@ export const EventFormModal: React.FC<Props> = ({ event, existingCodes, onClose,
                 onClick={() =>
                   setTiers((rows) => [...rows, { key: `new-${Date.now()}`, name: '', price: '0', quota: '50', sold: 0 }])
                 }
-                className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-bold text-coral-ink bg-card border border-[#F2542D]/40 hover:bg-soft"
+                className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-bold text-accent-ink bg-card border border-primary/40 hover:bg-soft"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Tambah kategori</span>
@@ -233,7 +233,7 @@ export const EventFormModal: React.FC<Props> = ({ event, existingCodes, onClose,
             <button
               type="submit"
               disabled={busy}
-              className="px-5 py-2.5 rounded-xl bg-[#F2542D] hover:bg-[#FF6A3D] text-white font-extrabold text-sm disabled:opacity-60 shadow-[0_4px_15px_rgba(242,84,45,0.25)]"
+              className="px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-on-primary font-extrabold text-sm disabled:opacity-60 shadow-[0_4px_15px_rgba(68,161,164,0.25)]"
             >
               {busy ? 'Menyimpan...' : isEdit ? 'Simpan Perubahan' : 'Tambah Acara'}
             </button>

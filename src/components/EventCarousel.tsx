@@ -100,7 +100,7 @@ export const EventCarousel: React.FC<EventCarouselProps> = ({
           </p>
 
           <div className="flex flex-wrap items-center gap-y-1.5 gap-x-4 text-xs text-ink pt-1">
-            <span className="font-medium text-coral-ink">{formattedDate}</span>
+            <span className="font-medium text-accent-ink">{formattedDate}</span>
             <span className="text-line2">•</span>
             <span className="text-ink2">{currentEvent.location}</span>
           </div>
@@ -116,7 +116,7 @@ export const EventCarousel: React.FC<EventCarouselProps> = ({
 
             <button
               onClick={() => onSelectEvent(currentEvent)}
-              className="px-6 py-3 rounded-xl bg-[#F2542D] hover:bg-[#FF6A3D] text-white font-extrabold text-xs transition-all shadow-[0_4px_20px_rgba(242,84,45,0.3)] hover:scale-103"
+              className="px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-on-primary font-extrabold text-xs transition-all shadow-[0_4px_20px_rgba(68,161,164,0.3)] hover:scale-103"
             >
               Pesan Tiket Sekarang
             </button>
@@ -132,7 +132,7 @@ export const EventCarousel: React.FC<EventCarouselProps> = ({
                 onClick={() => setCurrentIndex(idx)}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   currentIndex === idx
-                    ? 'w-8 bg-[#F2542D]'
+                    ? 'w-8 bg-primary'
                     : 'w-2 bg-line hover:bg-line2'
                 }`}
                 title={`Pilih ${item.title}`}
@@ -144,14 +144,14 @@ export const EventCarousel: React.FC<EventCarouselProps> = ({
           <div className="flex items-center space-x-2">
             <button
               onClick={handlePrev}
-              className="px-3 py-1.5 rounded-xl bg-paper/90 hover:bg-soft border border-line text-[11px] font-semibold text-ink hover:text-coral-ink transition-colors"
+              className="px-3 py-1.5 rounded-xl bg-paper/90 hover:bg-soft border border-line text-[11px] font-semibold text-ink hover:text-accent-ink transition-colors"
               title="Acara Sebelumnya"
             >
               Sebelumnya
             </button>
             <button
               onClick={handleNext}
-              className="px-3 py-1.5 rounded-xl bg-paper/90 hover:bg-soft border border-line text-[11px] font-semibold text-ink hover:text-coral-ink transition-colors"
+              className="px-3 py-1.5 rounded-xl bg-paper/90 hover:bg-soft border border-line text-[11px] font-semibold text-ink hover:text-accent-ink transition-colors"
               title="Acara Berikutnya"
             >
               Berikutnya

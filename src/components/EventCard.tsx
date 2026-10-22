@@ -32,12 +32,12 @@ export const EventCard: React.FC<EventCardProps> = ({
     year: 'numeric'
   });
 
-  let borderClasses = 'border-line hover:border-[#F2542D]/60 hover:shadow-[0_8px_30px_rgba(242,84,45,0.12)]';
+  let borderClasses = 'border-line hover:border-primary/60 hover:shadow-[0_8px_30px_rgba(68,161,164,0.12)]';
   let badgeHighlight = null;
 
   if (isSearchMatch) {
-    borderClasses = 'border-[#F2542D] ring-2 ring-[#F2542D]/40 bg-[#F2542D]/10 shadow-[0_4px_20px_rgba(242,84,45,0.35)]';
-    badgeHighlight = { label: 'TARGET COCOK', color: 'bg-[#F2542D] text-white font-extrabold' };
+    borderClasses = 'border-primary ring-2 ring-primary/40 bg-primary/10 shadow-[0_4px_20px_rgba(68,161,164,0.35)]';
+    badgeHighlight = { label: 'TARGET COCOK', color: 'bg-primary text-on-primary font-extrabold' };
   } else if (isPivot) {
     borderClasses = 'border-[#FFB81C] ring-2 ring-[#FFB81C]/40 bg-[#FFB81C]/10 shadow-[0_4px_15px_rgba(255,184,28,0.25)]';
     badgeHighlight = { label: 'PIVOT NODE', color: 'bg-[#FFB81C] text-black font-extrabold' };
@@ -45,11 +45,11 @@ export const EventCard: React.FC<EventCardProps> = ({
     borderClasses = 'border-[#FFB81C] ring-2 ring-[#FFB81C]/40 bg-[#FFB81C]/10 animate-pulse';
     badgeHighlight = { label: 'SWAP / MOVE', color: 'bg-[#FFB81C] text-black font-semibold' };
   } else if (isCompared) {
-    borderClasses = 'border-[#F2542D]/80 bg-[#F2542D]/5 ring-1 ring-[#F2542D]/30';
-    badgeHighlight = { label: 'MEMBANDINGKAN', color: 'bg-[#F2542D]/20 text-coral-ink border border-[#F2542D]/40' };
+    borderClasses = 'border-primary/80 bg-primary/5 ring-1 ring-primary/30';
+    badgeHighlight = { label: 'MEMBANDINGKAN', color: 'bg-primary/20 text-accent-ink border border-primary/40' };
   } else if (isSearchChecked) {
-    borderClasses = 'border-[#F2542D]/60 bg-card ring-1 ring-[#F2542D]/30';
-    badgeHighlight = { label: 'RADAR SCAN', color: 'bg-[#F2542D]/20 text-coral-ink' };
+    borderClasses = 'border-primary/60 bg-card ring-1 ring-primary/30';
+    badgeHighlight = { label: 'RADAR SCAN', color: 'bg-primary/20 text-accent-ink' };
   }
 
   const isSoldOut = event.available_stock <= 0;
@@ -61,13 +61,13 @@ export const EventCard: React.FC<EventCardProps> = ({
     >
       {/* Scanning Radar Beam (when actively checked or compared) */}
       {(isSearchChecked || isCompared) && (
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#F2542D]/20 to-transparent pointer-events-none animate-radar-sweep z-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/20 to-transparent pointer-events-none animate-radar-sweep z-20" />
       )}
 
       {/* Top Header Ticket Strip */}
       <div className="bg-head px-4 py-2.5 border-b border-line/70 flex items-center justify-between text-[11px] font-sans">
         <div className="flex items-center space-x-2">
-          <span className="text-coral-ink font-bold">{event.event_code}</span>
+          <span className="text-accent-ink font-bold">{event.event_code}</span>
           <span className="text-line">&bull;</span>
           <span className="text-muted">Tiket Resmi</span>
         </div>
@@ -117,7 +117,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 
         {/* Title & Description */}
         <div className="space-y-1.5 pt-0.5">
-          <h3 className="font-bold text-sm sm:text-base text-ink line-clamp-2 leading-snug group-hover:text-coral-ink transition-colors">
+          <h3 className="font-bold text-sm sm:text-base text-ink line-clamp-2 leading-snug group-hover:text-accent-ink transition-colors">
             {event.title}
           </h3>
           <p className="text-xs text-ink2 line-clamp-2 leading-relaxed font-normal">
@@ -145,7 +145,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 
         <button
           onClick={() => onViewDetails(event)}
-          className="px-4 py-2 rounded-xl text-xs font-bold bg-[#F2542D] hover:bg-[#FF6A3D] text-white transition-all shadow-[0_4px_15px_rgba(242,84,45,0.2)]"
+          className="px-4 py-2 rounded-xl text-xs font-bold bg-primary hover:bg-primary-hover text-on-primary transition-all shadow-[0_4px_15px_rgba(68,161,164,0.2)]"
         >
           Beli Tiket
         </button>

@@ -38,7 +38,7 @@ export const MyTicketsPage: React.FC<MyTicketsPageProps> = ({
           {onOpenVerificationScanner && (
             <button
               onClick={() => onOpenVerificationScanner()}
-              className="px-3.5 py-2 rounded-xl bg-head hover:bg-soft border border-[#F2542D]/40 text-coral-ink text-xs font-semibold transition-colors"
+              className="px-3.5 py-2 rounded-xl bg-head hover:bg-soft border border-primary/40 text-accent-ink text-xs font-semibold transition-colors"
             >
               Uji Scanner Gate
             </button>
@@ -49,7 +49,7 @@ export const MyTicketsPage: React.FC<MyTicketsPageProps> = ({
               onClick={() => setActiveSubTab('passes')}
               className={`px-4 py-2 rounded-lg transition-all ${
                 activeSubTab === 'passes'
-                  ? 'bg-paper text-coral-ink border border-[#F2542D]/40 font-bold'
+                  ? 'bg-paper text-accent-ink border border-primary/40 font-bold'
                   : 'text-ink2 hover:text-ink'
               }`}
             >
@@ -59,7 +59,7 @@ export const MyTicketsPage: React.FC<MyTicketsPageProps> = ({
               onClick={() => setActiveSubTab('bookings')}
               className={`px-4 py-2 rounded-lg transition-all ${
                 activeSubTab === 'bookings'
-                  ? 'bg-paper text-coral-ink border border-[#F2542D]/40 font-bold'
+                  ? 'bg-paper text-accent-ink border border-primary/40 font-bold'
                   : 'text-ink2 hover:text-ink'
               }`}
             >
@@ -87,12 +87,12 @@ export const MyTicketsPage: React.FC<MyTicketsPageProps> = ({
                 return (
                   <div
                     key={tkt.id}
-                    className="bg-card border border-line rounded-2xl p-5 flex flex-col justify-between space-y-4 hover:border-[#F2542D]/50 transition-all shadow-lg"
+                    className="bg-card border border-line rounded-2xl p-5 flex flex-col justify-between space-y-4 hover:border-primary/50 transition-all shadow-lg"
                   >
                     {/* Menu: Header Kartu Tiket */}
                     <div className="flex items-start justify-between">
                       <div className="space-y-1">
-                        <span className="text-[11px] font-sans text-coral-ink font-bold block">
+                        <span className="text-[11px] font-sans text-accent-ink font-bold block">
                           [{tkt.event_code}] • {tkt.ticket_type_name}
                         </span>
                         <h3 className="font-bold text-sm sm:text-base text-ink leading-snug">
@@ -136,14 +136,14 @@ export const MyTicketsPage: React.FC<MyTicketsPageProps> = ({
                         {onOpenVerificationScanner && (
                           <button
                             onClick={() => onOpenVerificationScanner(tkt.ticket_code)}
-                            className="px-3 py-2 rounded-xl text-xs font-semibold bg-card text-coral-ink hover:bg-soft border border-[#F2542D]/30 transition-all"
+                            className="px-3 py-2 rounded-xl text-xs font-semibold bg-card text-accent-ink hover:bg-soft border border-primary/30 transition-all"
                           >
                             Verifikasi Gate
                           </button>
                         )}
                         <button
                           onClick={() => onOpenDigitalTicket(tkt)}
-                          className="px-4 py-2 rounded-xl text-xs font-bold bg-[#F2542D] text-white hover:bg-[#FF6A3D] transition-all shadow-[0_4px_15px_rgba(242,84,45,0.25)] hover:scale-102"
+                          className="px-4 py-2 rounded-xl text-xs font-bold bg-primary text-on-primary hover:bg-primary-hover transition-all shadow-[0_4px_15px_rgba(68,161,164,0.25)] hover:scale-102"
                         >
                           Buka E-Tiket &amp; QR
                         </button>
@@ -156,7 +156,7 @@ export const MyTicketsPage: React.FC<MyTicketsPageProps> = ({
             </div>
           ) : (
             <div className="p-12 text-center rounded-2xl bg-card border border-line space-y-3">
-              <span className="text-xs font-sans text-coral-ink block">
+              <span className="text-xs font-sans text-accent-ink block">
                 [KOTAK TIKET KOSONG]
               </span>
               <h3 className="text-base font-bold text-ink">Belum Ada Tiket yang Dipesan</h3>
@@ -165,7 +165,7 @@ export const MyTicketsPage: React.FC<MyTicketsPageProps> = ({
               </p>
               <button
                 onClick={onNavigateToOperations}
-                className="px-5 py-2.5 rounded-xl bg-[#F2542D] text-white font-extrabold text-xs transition-all shadow-md hover:scale-102 mt-2"
+                className="px-5 py-2.5 rounded-xl bg-primary text-on-primary font-extrabold text-xs transition-all shadow-md hover:scale-102 mt-2"
               >
                 Jelajahi Acara Sekarang
               </button>
@@ -182,7 +182,7 @@ export const MyTicketsPage: React.FC<MyTicketsPageProps> = ({
             >
               <div className="space-y-1">
                 <div className="flex items-center space-x-2 text-xs">
-                  <span className="text-coral-ink font-sans font-bold">{bk.booking_code}</span>
+                  <span className="text-accent-ink font-sans font-bold">{bk.booking_code}</span>
                   <span className="text-line">•</span>
                   <span className="text-ink2 font-sans">
                     {new Date(bk.created_at).toLocaleString('id-ID')}

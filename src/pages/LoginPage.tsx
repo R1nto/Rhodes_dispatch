@@ -41,7 +41,7 @@ export const LoginPage: React.FC = () => {
   };
 
   const inputClass =
-    'w-full px-3.5 py-2.5 bg-paper border border-line focus:border-[#F2542D] rounded-xl text-sm text-ink outline-none transition-colors placeholder:text-muted';
+    'w-full px-3.5 py-2.5 bg-paper border border-line focus:border-primary rounded-xl text-sm text-ink outline-none transition-colors placeholder:text-muted';
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-paper">
@@ -58,7 +58,7 @@ export const LoginPage: React.FC = () => {
 
         <div className="bg-card border border-line rounded-2xl shadow-xl overflow-hidden">
           <div className="h-1.5 w-full flex">
-            <span className="flex-1 bg-[#F2542D]" />
+            <span className="flex-1 bg-primary" />
             <span className="flex-1 bg-[#FFB81C]" />
             <span className="flex-1 bg-[#2BB673]" />
             <span className="flex-1 bg-[#3B7DDD]" />
@@ -77,7 +77,7 @@ export const LoginPage: React.FC = () => {
                     setInfo(null);
                   }}
                   className={`py-2 rounded-lg font-bold transition-all ${
-                    mode === m ? 'bg-card text-coral-ink shadow-sm border border-line' : 'text-ink2 hover:text-ink'
+                    mode === m ? 'bg-card text-accent-ink shadow-sm border border-line' : 'text-ink2 hover:text-ink'
                   }`}
                 >
                   {m === 'login' ? 'Masuk' : 'Daftar'}
@@ -151,7 +151,7 @@ export const LoginPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={busy}
-                className="w-full py-3 rounded-xl bg-[#F2542D] hover:bg-[#FF6A3D] text-white font-extrabold text-sm transition-all shadow-[0_4px_15px_rgba(242,84,45,0.25)] disabled:opacity-60"
+                className="w-full py-3 rounded-xl bg-primary hover:bg-primary-hover text-on-primary font-extrabold text-sm transition-all shadow-[0_4px_15px_rgba(68,161,164,0.25)] disabled:opacity-60"
               >
                 {busy ? 'Memproses...' : mode === 'login' ? 'Masuk' : 'Buat Akun'}
               </button>
@@ -174,12 +174,12 @@ export const LoginPage: React.FC = () => {
                       setEmail(acc.email);
                       setPassword(acc.password);
                     }}
-                    className="w-full flex items-center justify-between text-left px-3 py-2 rounded-lg bg-card border border-line hover:border-[#F2542D]/60 transition-colors"
+                    className="w-full flex items-center justify-between text-left px-3 py-2 rounded-lg bg-card border border-line hover:border-primary/60 transition-colors"
                   >
                     <span className="text-xs text-ink">
                       <strong>{acc.role === 'admin' ? 'Admin' : 'User'}</strong> · {acc.email} / {acc.password}
                     </span>
-                    <span className="text-[10px] text-coral-ink font-bold">Isi otomatis</span>
+                    <span className="text-[10px] text-accent-ink font-bold">Isi otomatis</span>
                   </button>
                 ))}
               </div>

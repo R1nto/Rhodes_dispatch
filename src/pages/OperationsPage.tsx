@@ -255,7 +255,7 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({
             onClick={() => setSelectedCategory(cat)}
             className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
               selectedCategory === cat
-                ? 'bg-[#F2542D] text-white shadow-[0_4px_15px_rgba(242,84,45,0.25)]'
+                ? 'bg-primary text-on-primary shadow-[0_4px_15px_rgba(68,161,164,0.25)]'
                 : 'bg-card border border-line text-ink2 hover:text-ink hover:bg-soft'
             }`}
           >
@@ -272,14 +272,14 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({
           {/* Search Input Bar */}
           <div className="relative flex-1">
             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ink2">
-              <Search className="w-4 h-4 text-coral-ink" />
+              <Search className="w-4 h-4 text-accent-ink" />
             </div>
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari konser, anime expo, atau kode tiket (contoh: RH-OP-01)..."
-              className="w-full pl-10 pr-10 py-2.5 bg-paper border border-line focus:border-[#F2542D] rounded-xl text-xs text-ink outline-none placeholder:text-muted transition-colors"
+              className="w-full pl-10 pr-10 py-2.5 bg-paper border border-line focus:border-primary rounded-xl text-xs text-ink outline-none placeholder:text-muted transition-colors"
             />
             {searchQuery && (
               <button
@@ -301,7 +301,7 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({
               <select
                 value={searchAlgorithm}
                 onChange={(e) => setSearchAlgorithm(e.target.value as SearchAlgorithmType)}
-                className="bg-transparent text-xs font-bold text-coral-ink outline-none cursor-pointer"
+                className="bg-transparent text-xs font-bold text-accent-ink outline-none cursor-pointer"
               >
                 <option value="hash" className="bg-card text-ink">Hash Direct O(1) (Instan)</option>
                 <option value="trie" className="bg-card text-ink">Trie Prefix Tree O(M)</option>
@@ -321,7 +321,7 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({
               <select
                 value={searchAttribute}
                 onChange={(e) => setSearchAttribute(e.target.value as SearchAttribute)}
-                className="bg-transparent text-xs font-bold text-coral-ink outline-none cursor-pointer"
+                className="bg-transparent text-xs font-bold text-accent-ink outline-none cursor-pointer"
               >
                 <option value="event_code" className="bg-card text-ink">Kode Acara</option>
                 <option value="title" className="bg-card text-ink">Judul Acara</option>
@@ -446,7 +446,7 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({
             </p>
             <button
               onClick={handleClearSearch}
-              className="px-4 py-2 rounded-xl bg-paper border border-line hover:border-[#F2542D] text-xs font-bold text-ink"
+              className="px-4 py-2 rounded-xl bg-paper border border-line hover:border-primary text-xs font-bold text-ink"
             >
               Reset Filter Pencarian
             </button>

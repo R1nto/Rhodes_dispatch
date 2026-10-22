@@ -27,7 +27,7 @@ export const RhodesLogo: React.FC<RhodesLogoProps> = ({
     <div className={`relative inline-flex items-center justify-center shrink-0 ${sizeMap[size]} ${className}`}>
       {/* Subtle Originium Ambient Glow */}
       {withPulse && (
-        <div className="absolute inset-0 bg-[#F2542D]/20 rounded-xl blur-md animate-pulse pointer-events-none" />
+        <div className="absolute inset-0 bg-primary/20 rounded-xl blur-md animate-pulse pointer-events-none" />
       )}
 
       {/* Arknights Rhodes Island Tactical Chess Rook Vector Emblem */}
@@ -35,7 +35,7 @@ export const RhodesLogo: React.FC<RhodesLogoProps> = ({
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full drop-shadow-[0_2px_12px_rgba(242,84,45,0.3)] transition-transform duration-300 group-hover:scale-105"
+        className="w-full h-full drop-shadow-[0_2px_12px_rgba(68,161,164,0.3)] transition-transform duration-300 group-hover:scale-105"
       >
         {/* Outer Arknights Tactical Hexagon */}
         <polygon
@@ -58,7 +58,7 @@ export const RhodesLogo: React.FC<RhodesLogoProps> = ({
         <path
           d="M32 30 H40 V36 H46 V30 H54 V36 H60 V30 H68 V42 H64 L60 74 H40 L36 42 H32 Z"
           fill="var(--paper)"
-          stroke="#F2542D"
+          stroke="var(--primary)"
           strokeWidth="2"
         />
 
@@ -71,12 +71,12 @@ export const RhodesLogo: React.FC<RhodesLogoProps> = ({
         {/* Originium Core Crystal Diamond Base */}
         <polygon
           points="50,22 55,28 50,34 45,28"
-          fill="#F2542D"
+          fill="var(--primary)"
         />
 
         {/* Tactical Warning Notch Stripes */}
         <line x1="20" y1="26" x2="28" y2="26" stroke="#FFB81C" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="72" y1="74" x2="80" y2="74" stroke="#F2542D" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="72" y1="74" x2="80" y2="74" stroke="var(--primary)" strokeWidth="2.5" strokeLinecap="round" />
 
         {/* PRTS Diagnostic Index Marks */}
         <circle cx="50" cy="82" r="2" fill="#2BB673" />

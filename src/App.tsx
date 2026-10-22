@@ -101,7 +101,7 @@ function MainApp({ user, theme, onToggleTheme }: MainAppProps) {
   };
 
   return (
-    <div className="min-h-screen bg-paper text-ink flex flex-col font-sans selection:bg-[#F2542D]/30">
+    <div className="min-h-screen bg-paper text-ink flex flex-col font-sans selection:bg-primary/30">
       
       {/* Menu: Navigasi Atas */}
       <Navbar
@@ -136,8 +136,8 @@ function MainApp({ user, theme, onToggleTheme }: MainAppProps) {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-28 space-y-3 text-xs text-ink2">
-            <div className="w-10 h-10 rounded-full border-2 border-line border-t-[#F2542D] animate-spin" />
-            <p className="font-sans text-[11px] text-coral-ink">MEMUAT BOX OFFICE RHODES DISPATCH...</p>
+            <div className="w-10 h-10 rounded-full border-2 border-line border-t-primary animate-spin" />
+            <p className="font-sans text-[11px] text-accent-ink">MEMUAT BOX OFFICE RHODES DISPATCH...</p>
           </div>
         ) : (
           <>
@@ -212,10 +212,10 @@ function MainApp({ user, theme, onToggleTheme }: MainAppProps) {
                 Navigasi Cepat
               </h4>
               <ul className="space-y-1.5 text-xs text-ink2">
-                <li onClick={() => setCurrentTab('home')} className="hover:text-coral-ink cursor-pointer">Katalog Acara Terbaru</li>
-                <li onClick={() => setCurrentTab('operations')} className="hover:text-coral-ink cursor-pointer">Pencarian &amp; Log PRTS</li>
-                <li onClick={() => setCurrentTab('tickets')} className="hover:text-coral-ink cursor-pointer">Tiket Digital Saya</li>
-                <li onClick={() => setCurrentTab('profile')} className="hover:text-coral-ink cursor-pointer">Profil &amp; Akun Pembeli</li>
+                <li onClick={() => setCurrentTab('home')} className="hover:text-accent-ink cursor-pointer">Katalog Acara Terbaru</li>
+                <li onClick={() => setCurrentTab('operations')} className="hover:text-accent-ink cursor-pointer">Pencarian &amp; Log PRTS</li>
+                <li onClick={() => setCurrentTab('tickets')} className="hover:text-accent-ink cursor-pointer">Tiket Digital Saya</li>
+                <li onClick={() => setCurrentTab('profile')} className="hover:text-accent-ink cursor-pointer">Profil &amp; Akun Pembeli</li>
               </ul>
             </div>
 
@@ -224,10 +224,10 @@ function MainApp({ user, theme, onToggleTheme }: MainAppProps) {
                 Pusat Bantuan &amp; FAQ
               </h4>
               <ul className="space-y-1.5 text-xs text-ink2">
-                <li className="hover:text-coral-ink cursor-pointer">Panduan Beli Tiket Online</li>
-                <li className="hover:text-coral-ink cursor-pointer">Cara Penukaran Wristband di Venue</li>
-                <li className="hover:text-coral-ink cursor-pointer">Syarat &amp; Ketentuan Masuk Acara</li>
-                <li className="hover:text-coral-ink cursor-pointer">Kebijakan Privasi Pembeli</li>
+                <li className="hover:text-accent-ink cursor-pointer">Panduan Beli Tiket Online</li>
+                <li className="hover:text-accent-ink cursor-pointer">Cara Penukaran Wristband di Venue</li>
+                <li className="hover:text-accent-ink cursor-pointer">Syarat &amp; Ketentuan Masuk Acara</li>
+                <li className="hover:text-accent-ink cursor-pointer">Kebijakan Privasi Pembeli</li>
               </ul>
             </div>
 
@@ -263,7 +263,7 @@ function MainApp({ user, theme, onToggleTheme }: MainAppProps) {
 
           <div className="pt-8 border-t border-line/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-muted">
             <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 rounded-full bg-[#F2542D]" />
+              <span className="w-2 h-2 rounded-full bg-primary" />
               <span className="text-ink font-semibold">RHODES DISPATCH BOX OFFICE</span>
               <span>•</span>
               <span>Hak Cipta Dilindungi &copy; 2026</span>
@@ -272,7 +272,7 @@ function MainApp({ user, theme, onToggleTheme }: MainAppProps) {
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => setShowDbStatus(true)}
-                className="hover:text-coral-ink transition-colors"
+                className="hover:text-accent-ink transition-colors"
               >
                 [Status Server &amp; Database]
               </button>
@@ -354,8 +354,8 @@ export default function App() {
   if (!authReady) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center space-y-3 bg-paper">
-        <div className="w-10 h-10 rounded-full border-2 border-line border-t-[#F2542D] animate-spin" />
-        <p className="text-xs text-coral-ink">Memuat...</p>
+        <div className="w-10 h-10 rounded-full border-2 border-line border-t-primary animate-spin" />
+        <p className="text-xs text-accent-ink">Memuat...</p>
       </div>
     );
   }

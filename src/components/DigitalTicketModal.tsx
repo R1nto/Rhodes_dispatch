@@ -60,7 +60,7 @@ export const DigitalTicketModal: React.FC<DigitalTicketModalProps> = ({
   const isVip = ticket.ticket_type_name.toLowerCase().includes('vip');
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-scrim backdrop-blur-md animate-fade-in">
       <div 
         className="bg-card border border-line rounded-2xl max-w-md w-full overflow-hidden shadow-2xl relative max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
@@ -95,7 +95,7 @@ export const DigitalTicketModal: React.FC<DigitalTicketModalProps> = ({
               <span className="text-[10px] font-sans text-muted block">
                 KODE TIKET RESMI
               </span>
-              <span className="text-base font-sans font-black text-coral-ink">
+              <span className="text-base font-sans font-black text-accent-ink">
                 {ticket.ticket_code}
               </span>
             </div>
@@ -127,7 +127,7 @@ export const DigitalTicketModal: React.FC<DigitalTicketModalProps> = ({
           {/* Menu: Deskripsi Tiket & Hak Akses */}
           <div className="p-4 rounded-xl bg-head border border-line space-y-3">
             <div className="flex items-center justify-between border-b border-line/70 pb-2">
-              <span className="text-[10px] font-sans text-coral-ink font-bold">
+              <span className="text-[10px] font-sans text-accent-ink font-bold">
                 RINCIAN TIKET &amp; AKSES MASUK
               </span>
               <span className="text-[10px] font-sans text-green-ink bg-[#2BB673]/10 px-2 py-0.5 rounded border border-[#2BB673]/25">
@@ -203,7 +203,7 @@ export const DigitalTicketModal: React.FC<DigitalTicketModalProps> = ({
             {onVerifyTicket && (
               <button
                 onClick={() => onVerifyTicket(ticket.ticket_code)}
-                className="mt-3 py-2 px-4 rounded-xl text-xs font-bold bg-[#F2542D]/15 hover:bg-[#F2542D]/25 border border-[#F2542D]/40 text-coral-ink transition-all"
+                className="mt-3 py-2 px-4 rounded-xl text-xs font-bold bg-primary/15 hover:bg-primary/25 border border-primary/40 text-accent-ink transition-all"
               >
                 Uji Scan QR di Sini (Simulasi Gate Masuk)
               </button>
@@ -213,7 +213,7 @@ export const DigitalTicketModal: React.FC<DigitalTicketModalProps> = ({
               <span className="text-[10px] font-sans text-muted block">
                 TOKEN ENKRIPSI ANTI-DUPLIKASI
               </span>
-              <span className="font-sans text-xs text-coral-ink select-all break-all font-semibold">
+              <span className="font-sans text-xs text-accent-ink select-all break-all font-semibold">
                 {ticket.qr_token}
               </span>
             </div>
@@ -229,7 +229,7 @@ export const DigitalTicketModal: React.FC<DigitalTicketModalProps> = ({
           <div className="grid grid-cols-2 gap-2 pt-1">
             <button
               onClick={handleCopyLink}
-              className="py-2.5 px-3 rounded-xl text-xs font-semibold border border-line bg-head hover:border-[#F2542D]/50 text-ink transition-colors flex items-center justify-center space-x-1.5 text-center"
+              className="py-2.5 px-3 rounded-xl text-xs font-semibold border border-line bg-head hover:border-primary/50 text-ink transition-colors flex items-center justify-center space-x-1.5 text-center"
             >
               {copiedLink ? <Check className="w-4 h-4 text-green-ink" /> : <Copy className="w-4 h-4 text-ink2" />}
               <span>{copiedLink ? 'Tersalin!' : 'Salin Tautan'}</span>
@@ -239,7 +239,7 @@ export const DigitalTicketModal: React.FC<DigitalTicketModalProps> = ({
               <a
                 href={qrDataUrl}
                 download={`${ticket.ticket_code}-E-Ticket.png`}
-                className="py-2.5 px-3 rounded-xl text-xs font-bold border border-[#F2542D]/50 bg-[#F2542D] hover:bg-[#FF6A3D] text-white transition-all flex items-center justify-center space-x-1.5 text-center shadow-[0_4px_15px_rgba(242,84,45,0.2)]"
+                className="py-2.5 px-3 rounded-xl text-xs font-bold border border-primary/50 bg-primary hover:bg-primary-hover text-on-primary transition-all flex items-center justify-center space-x-1.5 text-center shadow-[0_4px_15px_rgba(68,161,164,0.2)]"
               >
                 <Download className="w-4 h-4" />
                 <span>Unduh QR Tiket</span>

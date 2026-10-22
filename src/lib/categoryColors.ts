@@ -8,7 +8,7 @@ const CATEGORY_STYLES: Record<string, { bg: string; text: string; soft: string }
   'Gaming': { bg: 'bg-[#2BB673]', text: 'text-white', soft: 'bg-green-tint text-green-ink border-green-edge' },
 };
 
-const FALLBACK = { bg: 'bg-[#F2542D]', text: 'text-white', soft: 'bg-coral-tint text-coral-ink2 border-coral-edge' };
+const FALLBACK = { bg: 'bg-primary', text: 'text-white', soft: 'bg-accent-tint text-accent-ink2 border-accent-edge' };
 
 export function categoryStyle(category: string) {
   return CATEGORY_STYLES[category] || FALLBACK;

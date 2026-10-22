@@ -42,11 +42,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 bg-paper/95 backdrop-blur-md border-b border-line select-none">
-      <div className="h-1.5 w-full flex"><span className="flex-1 bg-[#F2542D]" /><span className="flex-1 bg-[#FFB81C]" /><span className="flex-1 bg-[#2BB673]" /><span className="flex-1 bg-[#3B7DDD]" /><span className="flex-1 bg-[#E8458B]" /></div>
+      <div className="h-1.5 w-full flex"><span className="flex-1 bg-primary" /><span className="flex-1 bg-[#FFB81C]" /><span className="flex-1 bg-[#2BB673]" /><span className="flex-1 bg-[#3B7DDD]" /><span className="flex-1 bg-[#E8458B]" /></div>
       
       {/* Menu: Banner Pengumuman */}
-      <div className="bg-gradient-to-r from-[#F2542D]/10 via-head to-[#FFB81C]/10 border-b border-line/50 px-4 py-1.5 text-center text-xs flex items-center justify-center space-x-2">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#F2542D] animate-ping" />
+      <div className="bg-gradient-to-r from-primary/10 via-head to-[#FFB81C]/10 border-b border-line/50 px-4 py-1.5 text-center text-xs flex items-center justify-center space-x-2">
+        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" />
         <span className="text-ink font-medium">
           Box Office Resmi: Presale Phase 1 Dibuka • Jaminan E-Ticket QR Instan
         </span>
@@ -63,10 +63,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <RhodesLogo size="md" />
             <div>
               <div className="flex items-center space-x-2">
-                <span className="font-sans text-base font-black text-ink group-hover:text-coral-ink transition-colors">
+                <span className="font-sans text-base font-black text-ink group-hover:text-accent-ink transition-colors">
                   RHODES DISPATCH
                 </span>
-                <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[9px] font-sans bg-[#F2542D]/10 text-coral-ink border border-[#F2542D]/30 font-bold">
+                <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[9px] font-sans bg-primary/10 text-accent-ink border border-primary/30 font-bold">
                   BOX OFFICE
                 </span>
               </div>
@@ -86,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => onSelectTab(item.id)}
                   className={`relative px-4 py-2 rounded-xl text-xs font-medium transition-all ${
                     isActive
-                      ? 'bg-card text-coral-ink border border-line shadow-sm font-bold'
+                      ? 'bg-card text-accent-ink border border-line shadow-sm font-bold'
                       : 'text-ink2 hover:text-ink hover:bg-card/50'
                   }`}
                 >
@@ -97,7 +97,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </span>
                   )}
                   {isActive && (
-                    <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#F2542D] rounded-full shadow-[0_4px_8px_#F2542D]" />
+                    <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary rounded-full shadow-[0_0_8px_var(--primary)]" />
                   )}
                 </button>
               );
@@ -109,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {onOpenScanner && (
               <button
                 onClick={onOpenScanner}
-                className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-card hover:bg-soft border border-[#F2542D]/35 text-coral-ink text-xs font-sans transition-all"
+                className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-card hover:bg-soft border border-primary/35 text-accent-ink text-xs font-sans transition-all"
                 title="Buka Scanner Verifikasi Tiket"
               >
                 <span className="w-2 h-2 rounded-full bg-[#2BB673] animate-pulse" />
@@ -119,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
             onClick={onToggleTheme}
-            className="p-2 rounded-xl bg-card border border-line text-ink2 hover:text-coral-ink hover:border-[#F2542D]/50 transition-colors"
+            className="p-2 rounded-xl bg-card border border-line text-ink2 hover:text-accent-ink hover:border-primary/50 transition-colors"
             title={theme === 'dark' ? 'Ganti ke mode terang' : 'Ganti ke mode gelap'}
             aria-label={theme === 'dark' ? 'Ganti ke mode terang' : 'Ganti ke mode gelap'}
     >
@@ -128,16 +128,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={() => onSelectTab('profile')}
-              className="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-card border border-line hover:border-[#F2542D]/50 transition-colors"
+              className="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-card border border-line hover:border-primary/50 transition-colors"
             >
-              <div className="w-7 h-7 rounded-lg bg-paper border border-line2 flex items-center justify-center text-coral-ink text-xs font-bold font-sans">
+              <div className="w-7 h-7 rounded-lg bg-paper border border-line2 flex items-center justify-center text-accent-ink text-xs font-bold font-sans">
                 {user.name.charAt(0)}
               </div>
               <div className="text-left">
                 <div className="text-xs font-semibold text-ink leading-tight">
                   {user.name}
                 </div>
-                <div className={`text-[10px] font-bold ${isAdminUser ? 'text-coral-ink' : 'text-green-ink'}`}>
+                <div className={`text-[10px] font-bold ${isAdminUser ? 'text-accent-ink' : 'text-green-ink'}`}>
                   {isAdminUser ? 'Admin' : 'Pengguna'}
                 </div>
               </div>
@@ -157,7 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="md:hidden flex items-center space-x-2">
             <button
             onClick={onToggleTheme}
-            className="p-2 rounded-xl bg-card border border-line text-ink2 hover:text-coral-ink hover:border-[#F2542D]/50 transition-colors"
+            className="p-2 rounded-xl bg-card border border-line text-ink2 hover:text-accent-ink hover:border-primary/50 transition-colors"
             title={theme === 'dark' ? 'Ganti ke mode terang' : 'Ganti ke mode gelap'}
             aria-label={theme === 'dark' ? 'Ganti ke mode terang' : 'Ganti ke mode gelap'}
     >
@@ -188,7 +188,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }}
                 className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-medium ${
                   isActive
-                    ? 'bg-paper text-coral-ink border border-[#F2542D]/40 font-semibold'
+                    ? 'bg-paper text-accent-ink border border-primary/40 font-semibold'
                     : 'text-ink2 hover:text-ink'
                 }`}
               >
@@ -208,7 +208,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setMobileMenuOpen(false);
                 onOpenScanner();
               }}
-              className="w-full text-left py-2.5 px-3.5 rounded-lg text-xs font-sans font-bold text-coral-ink bg-head border border-[#F2542D]/30 mt-2 flex items-center space-x-2"
+              className="w-full text-left py-2.5 px-3.5 rounded-lg text-xs font-sans font-bold text-accent-ink bg-head border border-primary/30 mt-2 flex items-center space-x-2"
             >
               <span className="w-2 h-2 rounded-full bg-[#2BB673] animate-pulse" />
               <span>Buka Scanner Gate / Verifikasi QR</span>

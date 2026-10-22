@@ -21,7 +21,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ onOpenDbStatus }) => {
 
       <div className="bg-card border border-line rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
         <div className="flex items-center space-x-4">
-          <div className="w-16 h-16 rounded-2xl bg-paper border border-line2 flex items-center justify-center text-2xl font-black text-coral-ink font-sans">
+          <div className="w-16 h-16 rounded-2xl bg-paper border border-line2 flex items-center justify-center text-2xl font-black text-accent-ink font-sans">
             {user.name.charAt(0).toUpperCase()}
           </div>
           <div className="space-y-1">
@@ -30,7 +30,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ onOpenDbStatus }) => {
             <span
               className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${
                 isAdminUser
-                  ? 'bg-coral-tint text-coral-ink border-coral-edge'
+                  ? 'bg-accent-tint text-accent-ink border-accent-edge'
                   : 'bg-green-tint text-green-ink border-green-edge'
               }`}
             >
@@ -61,7 +61,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ onOpenDbStatus }) => {
         <div className="pt-4 border-t border-line">
           <button
             onClick={onOpenDbStatus}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-card border border-line hover:border-[#F2542D]/60 text-ink"
+            className="px-4 py-2 rounded-xl text-xs font-bold bg-card border border-line hover:border-primary/60 text-ink"
           >
             Status Server &amp; Database
           </button>

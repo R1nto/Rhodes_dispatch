@@ -22,7 +22,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section className="space-y-3">
         <div className="flex items-center justify-between px-1">
           <div>
-            <span className="text-[11px] font-semibold text-coral-ink block">
+            <span className="text-[11px] font-semibold text-accent-ink block">
               Sorotan Utama Musim Ini
             </span>
             <h1 className="text-xl sm:text-2xl font-extrabold text-ink tracking-tight">
@@ -31,7 +31,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
           <button
             onClick={onNavigateToOperations}
-            className="text-xs text-ink2 hover:text-coral-ink transition-colors font-medium"
+            className="text-xs text-ink2 hover:text-accent-ink transition-colors font-medium"
           >
             Lihat Semua Jadwal ({events.length})
           </button>
@@ -46,8 +46,8 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* Menu: Keunggulan Layanan Box Office */}
       <section className="p-6 sm:p-8 rounded-2xl bg-card border border-line">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
-          <div className="space-y-1.5 p-4 rounded-2xl border bg-coral-tint border-coral-edge">
-            <span className="text-coral-ink font-bold text-xs block">
+          <div className="space-y-1.5 p-4 rounded-2xl border bg-accent-tint border-accent-edge">
+            <span className="text-accent-ink font-bold text-xs block">
               Jaminan 100% Resmi
             </span>
             <p className="text-ink2 leading-relaxed">
@@ -98,7 +98,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           <button
             onClick={onNavigateToOperations}
-            className="text-xs text-coral-ink hover:text-[#FF6A3D] font-bold transition-colors"
+            className="text-xs text-accent-ink hover:text-primary-hover font-bold transition-colors"
           >
             Buka Katalog Lengkap
           </button>
@@ -116,7 +116,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             return (
               <div
                 key={evt.id}
-                className="bg-card border border-line rounded-2xl hover:border-[#F2542D]/50 transition-all flex flex-col justify-between overflow-hidden group shadow-lg"
+                className="bg-card border border-line rounded-2xl hover:border-primary/50 transition-all flex flex-col justify-between overflow-hidden group shadow-lg"
               >
                 <div className="relative aspect-16/10 bg-paper overflow-hidden">
                   <img
@@ -130,7 +130,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     </span>
                   </div>
                   <div className="absolute bottom-3 right-3">
-                    <span className="px-2.5 py-0.5 rounded-md text-[10px] font-sans bg-paper/90 border border-line text-coral-ink font-bold">
+                    <span className="px-2.5 py-0.5 rounded-md text-[10px] font-sans bg-paper/90 border border-line text-accent-ink font-bold">
                       {evt.event_code}
                     </span>
                   </div>
@@ -138,7 +138,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                 <div className="p-5 space-y-3.5 flex-1 flex flex-col justify-between">
                   <div className="space-y-1.5">
-                    <h3 className="font-bold text-sm sm:text-base text-ink line-clamp-2 leading-snug group-hover:text-coral-ink transition-colors">
+                    <h3 className="font-bold text-sm sm:text-base text-ink line-clamp-2 leading-snug group-hover:text-accent-ink transition-colors">
                       {evt.title}
                     </h3>
                     <p className="text-xs text-ink2 line-clamp-2 leading-relaxed">
@@ -161,7 +161,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                     <button
                       onClick={() => onViewEventDetails(evt)}
-                      className="px-4 py-2 rounded-xl text-xs font-bold bg-[#F2542D] hover:bg-[#FF6A3D] text-white transition-all shadow-[0_4px_15px_rgba(242,84,45,0.2)]"
+                      className="px-4 py-2 rounded-xl text-xs font-bold bg-primary hover:bg-primary-hover text-on-primary transition-all shadow-[0_4px_15px_rgba(68,161,164,0.2)]"
                     >
                       Beli Tiket
                     </button>
@@ -176,7 +176,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* Menu: Panduan Alur Pembelian */}
       <section className="rounded-2xl border border-line bg-card p-6 sm:p-10 space-y-6">
         <div>
-          <span className="text-xs font-semibold text-coral-ink block">
+          <span className="text-xs font-semibold text-accent-ink block">
             Alur Pembelian
           </span>
           <h2 className="text-xl sm:text-2xl font-extrabold text-ink mt-1 tracking-tight">
@@ -185,8 +185,8 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-          <div className="p-5 rounded-xl bg-coral-tint border border-coral-edge space-y-2">
-            <span className="text-xs font-sans font-extrabold text-coral-ink">Langkah 01</span>
+          <div className="p-5 rounded-xl bg-accent-tint border border-accent-edge space-y-2">
+            <span className="text-xs font-sans font-extrabold text-accent-ink">Langkah 01</span>
             <h4 className="font-bold text-sm text-ink">Pilih Acara &amp; Kategori</h4>
             <p className="text-ink2 leading-relaxed">
               Tentukan acara favorit Anda dan pilih jenis tiket (Regular Pass, VIP Vanguard, atau All-Access) sesuai ketersediaan kuota.

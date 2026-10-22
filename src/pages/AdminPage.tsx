@@ -71,7 +71,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ events, onChanged }) => {
         </div>
         <button
           onClick={() => setCreating(true)}
-          className="flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-[#F2542D] hover:bg-[#FF6A3D] text-white font-extrabold text-sm shadow-[0_4px_15px_rgba(242,84,45,0.25)]"
+          className="flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-on-primary font-extrabold text-sm shadow-[0_4px_15px_rgba(68,161,164,0.25)]"
         >
           <Plus className="w-4 h-4" />
           <span>Tambah Acara</span>
@@ -96,7 +96,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ events, onChanged }) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Cari acara berdasarkan judul, kode, atau kategori..."
-          className="w-full pl-10 pr-4 py-2.5 bg-card border border-line focus:border-[#F2542D] rounded-xl text-sm text-ink outline-none placeholder:text-muted"
+          className="w-full pl-10 pr-4 py-2.5 bg-card border border-line focus:border-primary rounded-xl text-sm text-ink outline-none placeholder:text-muted"
         />
       </div>
 
@@ -119,7 +119,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ events, onChanged }) => {
               />
               <div className="flex-1 min-w-0 space-y-1.5">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-bold text-coral-ink">{ev.event_code}</span>
+                  <span className="text-xs font-bold text-accent-ink">{ev.event_code}</span>
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${style.bg} ${style.text}`}>{ev.category}</span>
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-soft border border-line text-ink2">
                     {STATUS_LABEL[ev.status] || ev.status}
@@ -137,7 +137,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ events, onChanged }) => {
               <div className="flex items-center gap-2 shrink-0">
                 <button
                   onClick={() => setEditing(ev)}
-                  className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-card border border-line hover:border-[#F2542D]/60 text-ink"
+                  className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-card border border-line hover:border-primary/60 text-ink"
                 >
                   <Pencil className="w-3.5 h-3.5" />
                   <span>Ubah</span>
@@ -174,7 +174,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ events, onChanged }) => {
       )}
 
       {toDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-md animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-scrim backdrop-blur-md animate-fade-in">
           <div className="bg-card border border-line rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-2xl">
             <h3 className="font-extrabold text-ink">Hapus acara ini?</h3>
             <p className="text-sm text-ink2">
