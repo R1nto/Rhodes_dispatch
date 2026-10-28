@@ -14,6 +14,7 @@ import { executeSorting } from '../algorithms/sorting';
 import { executeSearch } from '../algorithms/searching';
 import { SystemLogPanel } from '../components/SystemLogPanel';
 import { isAdmin } from '../lib/auth';
+import { AlgoSettings, fetchAlgoSettings, saveAlgoSettings } from '../lib/settings';
 import { EventCard } from '../components/EventCard';
 import { Search, RotateCcw } from 'lucide-react';
 
@@ -219,6 +220,60 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({
     searchAttribute
   ]);
 
+  const adminMode = isAdmin();
+  const [settingsNotice, setSettingsNotice] = useState<{ type: 'ok' | 'err'; text: string } | null>(null);
+
+  // Muat pengaturan algoritma yang ditetapkan admin
+  useEffect(() => {
+    let cancelled = false;
+    fetchAlgoSettings().then((st) => {
+      if (cancelled) return;
+      setSortAlgorithm(st.sortAlgorithm);
+      setSortAttribute(st.sortAttribute);
+      setSortDirection(st.sortDirection);
+      setSearchAlgorithm(st.searchAlgorithm);
+      setSearchAttribute(st.searchAttribute);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Admin mengubah algoritma: terapkan ke tampilan dan simpan untuk semua pengguna
+  const applySettings = async (patch: Partial<AlgoSettings>) => {
+    const next: AlgoSettings = {
+      sortAlgorithm,
+      sortAttribute,
+      sortDirection,
+      searchAlgorithm,
+      searchAttribute,
+      ...patch
+    };
+    setSortAlgorithm(next.sortAlgorithm);
+    setSortAttribute(next.sortAttribute);
+    setSortDirection(next.sortDirection);
+    setSearchAlgorithm(next.searchAlgorithm);
+    setSearchAttribute(next.searchAttribute);
+
+    const res = await saveAlgoSettings(next);
+    setSettingsNotice(
+      res.success
+        ? { type: 'ok', text: 'Pengaturan algoritma tersimpan dan berlaku untuk semua pengguna.' }
+        : { type: 'err', text: res.error || 'Gagal menyimpan pengaturan.' }
+    );
+    window.setTimeout(() => setSettingsNotice(null), 3500);
+  };
+
+  // Admin: urutan tersimpan sebagai bawaan semua pengguna. User: hanya mengubah tampilannya sendiri.
+  const changeSortAttribute = (value: SortAttribute) => {
+    if (adminMode) applySettings({ sortAttribute: value });
+    else setSortAttribute(value);
+  };
+  const changeSortDirection = (value: SortDirection) => {
+    if (adminMode) applySettings({ sortDirection: value });
+    else setSortDirection(value);
+  };
+
   const handleClearSearch = () => {
     setSearchQuery('');
     setDebouncedSearchQuery('');
@@ -267,7 +322,19 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({
 
       {/* TACTICAL SEARCH & SORTING FILTER PANEL */}
       <section className="bg-card border border-line rounded-2xl p-4 sm:p-5 space-y-4 shadow-lg">
-        
+        {adminMode && (
+          <div className="flex flex-wrap items-center justify-between gap-2 px-3.5 py-2 rounded-xl bg-accent-tint border border-accent-edge text-xs">
+            <span className="text-accent-ink font-semibold">
+              Pengaturan algoritma (khusus admin): perubahan berlaku untuk semua pengguna.
+            </span>
+            {settingsNotice && (
+              <span className={settingsNotice.type === 'ok' ? 'text-green-ink font-bold' : 'text-red-ink font-bold'}>
+                {settingsNotice.text}
+              </span>
+            )}
+          </div>
+        )}
+
         {/* Row 1: Search Controls */}
         <div className="flex flex-col lg:flex-row gap-3">
           {/* Search Input Bar */}
@@ -294,102 +361,108 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({
           </div>
 
           {/* Search Engine Mode & Target Field */}
-          <div className="flex flex-wrap sm:flex-nowrap gap-2">
-            <div className="flex items-center space-x-2 bg-paper border border-line px-3.5 py-2 rounded-xl">
-              <span className="text-[11px] text-ink2 whitespace-nowrap">
-                Engine Cari:
-              </span>
-              <select
-                value={searchAlgorithm}
-                onChange={(e) => setSearchAlgorithm(e.target.value as SearchAlgorithmType)}
-                className="bg-transparent text-xs font-bold text-accent-ink outline-none cursor-pointer"
-              >
-                <option value="hash" className="bg-card text-ink">Hash Direct O(1) (Instan)</option>
-                <option value="trie" className="bg-card text-ink">Trie Prefix Tree O(M)</option>
-                <option value="fibonacci" className="bg-card text-ink">Fibonacci Search</option>
-                <option value="binary" className="bg-card text-ink">Binary Search (Biner)</option>
-                <option value="jump" className="bg-card text-ink">Jump Search (Blok √N)</option>
-                <option value="exponential" className="bg-card text-ink">Exponential Search</option>
-                <option value="interpolation" className="bg-card text-ink">Interpolation Search</option>
-                <option value="linear" className="bg-card text-ink">Linear Search</option>
-              </select>
-            </div>
+          {adminMode && (
+            <div className="flex flex-wrap sm:flex-nowrap gap-2">
+              <div className="flex items-center space-x-2 bg-paper border border-line px-3.5 py-2 rounded-xl">
+                <span className="text-[11px] text-ink2 whitespace-nowrap">
+                  Engine Cari:
+                </span>
+                <select
+                  value={searchAlgorithm}
+                  onChange={(e) => applySettings({ searchAlgorithm: e.target.value as SearchAlgorithmType })}
+                  className="bg-transparent text-xs font-bold text-accent-ink outline-none cursor-pointer"
+                >
+                  <option value="hash" className="bg-card text-ink">Hash Direct O(1) (Instan)</option>
+                  <option value="trie" className="bg-card text-ink">Trie Prefix Tree O(M)</option>
+                  <option value="fibonacci" className="bg-card text-ink">Fibonacci Search</option>
+                  <option value="binary" className="bg-card text-ink">Binary Search (Biner)</option>
+                  <option value="jump" className="bg-card text-ink">Jump Search (Blok √N)</option>
+                  <option value="exponential" className="bg-card text-ink">Exponential Search</option>
+                  <option value="interpolation" className="bg-card text-ink">Interpolation Search</option>
+                  <option value="linear" className="bg-card text-ink">Linear Search</option>
+                </select>
+              </div>
 
-            <div className="flex items-center space-x-2 bg-paper border border-line px-3.5 py-2 rounded-xl">
-              <span className="text-[11px] text-ink2 whitespace-nowrap">
-                Kolom Target:
-              </span>
-              <select
-                value={searchAttribute}
-                onChange={(e) => setSearchAttribute(e.target.value as SearchAttribute)}
-                className="bg-transparent text-xs font-bold text-accent-ink outline-none cursor-pointer"
-              >
-                <option value="event_code" className="bg-card text-ink">Kode Acara</option>
-                <option value="title" className="bg-card text-ink">Judul Acara</option>
-              </select>
+              <div className="flex items-center space-x-2 bg-paper border border-line px-3.5 py-2 rounded-xl">
+                <span className="text-[11px] text-ink2 whitespace-nowrap">
+                  Kolom Target:
+                </span>
+                <select
+                  value={searchAttribute}
+                  onChange={(e) => applySettings({ searchAttribute: e.target.value as SearchAttribute })}
+                  className="bg-transparent text-xs font-bold text-accent-ink outline-none cursor-pointer"
+                >
+                  <option value="event_code" className="bg-card text-ink">Kode Acara</option>
+                  <option value="title" className="bg-card text-ink">Judul Acara</option>
+                </select>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
-        {/* Row 2: Sorting Controls */}
-        <div className="pt-3 border-t border-line/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        {/* Row 2: Pengurutan. Pilihan algoritma hanya untuk admin */}
+        {(
+          <div className="pt-3 border-t border-line/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           
-          <div className="text-xs text-ink2">
-            <span className="font-semibold text-ink">Penyortiran Tiket:</span>
-          </div>
+            <div className="text-xs text-ink2">
+              <span className="font-semibold text-ink">{adminMode ? 'Penyortiran Tiket:' : 'Urutkan berdasarkan:'}</span>
+            </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
             
-            {/* Sorting Algorithm Dropdown */}
-            <div className="flex items-center space-x-1.5 bg-paper border border-line px-3 py-1.5 rounded-xl">
-              <span className="text-[11px] text-ink2">Algoritma:</span>
-              <select
-                value={sortAlgorithm}
-                onChange={(e) => setSortAlgorithm(e.target.value as SortAlgorithmType)}
-                className="bg-transparent text-xs font-bold text-amber-ink outline-none cursor-pointer"
-              >
-                <option value="radix" className="bg-card text-ink">Radix Sort (LSD Bucket)</option>
-                <option value="timsort" className="bg-card text-ink">TimSort (Galloping Hybrid)</option>
-                <option value="heapsort" className="bg-card text-ink">Heap Sort (Binary Tree)</option>
-                <option value="combsort" className="bg-card text-ink">Comb Sort (Shrink 1.3)</option>
-                <option value="quick" className="bg-card text-ink">Quick Sort (Lomuto)</option>
-                <option value="merge" className="bg-card text-ink">Merge Sort (Divide &amp; Conquer)</option>
-                <option value="insertion" className="bg-card text-ink">Insertion Sort</option>
-                <option value="selection" className="bg-card text-ink">Selection Sort</option>
-                <option value="bubble" className="bg-card text-ink">Bubble Sort</option>
-                <option value="shell" className="bg-card text-ink">Shell Sort (Gapped)</option>
-                <option value="cocktail" className="bg-card text-ink">Cocktail Shaker Sort</option>
-              </select>
-            </div>
+              {/* Sorting Algorithm Dropdown */}
+              {adminMode && (
+                <div className="flex items-center space-x-1.5 bg-paper border border-line px-3 py-1.5 rounded-xl">
+                  <span className="text-[11px] text-ink2">Algoritma:</span>
+                  <select
+                    value={sortAlgorithm}
+                    onChange={(e) => applySettings({ sortAlgorithm: e.target.value as SortAlgorithmType })}
+                    className="bg-transparent text-xs font-bold text-amber-ink outline-none cursor-pointer"
+                  >
+                    <option value="radix" className="bg-card text-ink">Radix Sort (LSD Bucket)</option>
+                    <option value="timsort" className="bg-card text-ink">TimSort (Galloping Hybrid)</option>
+                    <option value="heapsort" className="bg-card text-ink">Heap Sort (Binary Tree)</option>
+                    <option value="combsort" className="bg-card text-ink">Comb Sort (Shrink 1.3)</option>
+                    <option value="quick" className="bg-card text-ink">Quick Sort (Lomuto)</option>
+                    <option value="merge" className="bg-card text-ink">Merge Sort (Divide &amp; Conquer)</option>
+                    <option value="insertion" className="bg-card text-ink">Insertion Sort</option>
+                    <option value="selection" className="bg-card text-ink">Selection Sort</option>
+                    <option value="bubble" className="bg-card text-ink">Bubble Sort</option>
+                    <option value="shell" className="bg-card text-ink">Shell Sort (Gapped)</option>
+                    <option value="cocktail" className="bg-card text-ink">Cocktail Shaker Sort</option>
+                  </select>
+                </div>
+              )}
 
-            {/* Sorting Attribute Dropdown */}
-            <div className="flex items-center space-x-1.5 bg-paper border border-line px-3 py-1.5 rounded-xl">
-              <span className="text-[11px] text-ink2">Parameter:</span>
-              <select
-                value={sortAttribute}
-                onChange={(e) => setSortAttribute(e.target.value as SortAttribute)}
-                className="bg-transparent text-xs font-bold text-amber-ink outline-none cursor-pointer"
-              >
-                <option value="min_price" className="bg-card text-ink">Harga Tiket</option>
-                <option value="title" className="bg-card text-ink">Nama Acara (A-Z)</option>
-                <option value="event_code" className="bg-card text-ink">Kode Acara</option>
-                <option value="starts_at" className="bg-card text-ink">Tanggal Acara</option>
-                <option value="available_stock" className="bg-card text-ink">Sisa Kuota Tiket</option>
-              </select>
-            </div>
+              {/* Sorting Attribute Dropdown */}
+              <div className="flex items-center space-x-1.5 bg-paper border border-line px-3 py-1.5 rounded-xl">
+                <span className="text-[11px] text-ink2">Parameter:</span>
+                <select
+                  value={sortAttribute}
+                  onChange={(e) => changeSortAttribute(e.target.value as SortAttribute)}
+                  className="bg-transparent text-xs font-bold text-amber-ink outline-none cursor-pointer"
+                >
+                  <option value="min_price" className="bg-card text-ink">Harga Tiket</option>
+                  <option value="title" className="bg-card text-ink">Nama Acara (A-Z)</option>
+                  <option value="event_code" className="bg-card text-ink">Kode Acara</option>
+                  <option value="starts_at" className="bg-card text-ink">Tanggal Acara</option>
+                  <option value="available_stock" className="bg-card text-ink">Sisa Kuota Tiket</option>
+                </select>
+              </div>
 
-            {/* Sort Direction Toggle */}
-            <button
-              onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
-              className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-paper hover:bg-soft border border-line hover:border-[#FFB81C]/50 text-ink transition-colors"
-              title="Ganti Arah Urutan"
-            >
-              <span>{sortDirection === 'asc' ? 'Urutkan Naik (Asc)' : 'Urutkan Turun (Desc)'}</span>
-            </button>
+              {/* Sort Direction Toggle */}
+              <button
+                onClick={() => changeSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
+                className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-paper hover:bg-soft border border-line hover:border-[#FFB81C]/50 text-ink transition-colors"
+                title="Ganti Arah Urutan"
+              >
+                <span>{sortDirection === 'asc' ? 'Urutkan Naik (Asc)' : 'Urutkan Turun (Desc)'}</span>
+              </button>
+
+            </div>
 
           </div>
-
-        </div>
+        )}
 
       </section>
 
