@@ -17,18 +17,20 @@ Dibangun dengan React 19, TypeScript, Vite, dan Tailwind CSS v4. Data bisa disim
 **Khusus admin**
 - Menu **Kelola Acara**: tambah, ubah, dan hapus acara beserta kategori tiketnya.
 - **Scan & Verifikasi QR** dan check-in tiket di gerbang.
+- Panel **System Log** dan **pengaturan algoritma** (mesin cari, kolom target, algoritma urut, parameter, arah urut) di halaman Jelajahi Acara. Pilihan admin tersimpan dan berlaku untuk semua pengguna.
 
 | | User | Admin |
 |---|:---:|:---:|
 | Lihat acara, pesan tiket, lihat tiket sendiri | ✔ | ✔ |
 | Tambah / ubah / hapus acara dan kategori tiket | – | ✔ |
 | Verifikasi QR dan check-in gerbang | – | ✔ |
+| Panel log dan pilihan algoritma katalog | – | ✔ |
 
 Pembatasan ini dijaga di dua lapis: tampilan (menu disembunyikan) dan database (Row Level Security di Supabase). User biasa tidak bisa mengubah data walau memanggil API langsung.
 
 ## Algoritma di katalog
 
-Panel **PRTS System Log** di halaman Jelajahi Acara menampilkan langkah-langkah algoritma yang berjalan.
+Panel **PRTS System Log** di halaman Jelajahi Acara menampilkan langkah-langkah algoritma yang berjalan. Panel log dan pilihan algoritma (mesin cari, kolom target, algoritma urut) hanya tampil untuk admin. User tetap bisa mencari, memfilter kategori, dan mengurutkan berdasarkan parameter (harga, nama, kode, tanggal, kuota) serta arahnya, sedangkan algoritma yang dipakai mengikuti pengaturan yang disimpan admin (tabel `app_settings` di Supabase, atau localStorage di mode demo).
 
 - **Pengurutan (11):** Radix, Timsort, Heapsort, Quick, Merge, Comb, Insertion, Selection, Bubble, Shell, Cocktail. Atribut: harga terendah, judul, kode acara, tanggal, stok tersedia.
 - **Pencarian (8):** Hash, Trie, Fibonacci, Binary, Jump, Exponential, Interpolation, Linear.
@@ -77,7 +79,7 @@ Daftar akun baru lewat tab **Daftar** otomatis berperan user. Admin dapat mengem
 1. Buat project di [supabase.com](https://supabase.com).
 2. Buka **SQL Editor** dan jalankan dua file berikut secara berurutan:
    1. `supabase/schema.sql`: tabel, indeks, kebijakan RLS dasar, dan data awal.
-   2. `supabase/auth_roles.sql`: profil otomatis saat daftar, hak akses admin, dan fungsi pemesanan yang aman.
+   2. `supabase/auth_roles.sql`: profil otomatis saat daftar, hak akses admin, fungsi pemesanan yang aman, dan tabel pengaturan algoritma.
 3. Salin `.env.example` menjadi `.env.local`, lalu isi:
    ```env
    VITE_SUPABASE_URL="https://xxxxxxxx.supabase.co"
@@ -127,6 +129,7 @@ rhodes-dispatch/
     │   ├── supabaseClient.ts  # koneksi Supabase
     │   ├── auth.ts            # login, daftar, logout, peran
     │   ├── supabase.ts        # data acara, CRUD, booking, verifikasi
+    │   ├── settings.ts        # pengaturan algoritma katalog (diatur admin)
     │   ├── theme.ts           # tema terang/gelap
     │   └── categoryColors.ts  # warna per kategori acara
     ├── pages/               # Home, Operations (katalog), MyTickets, Profile, Login, Admin
