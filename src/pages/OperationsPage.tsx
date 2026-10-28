@@ -13,6 +13,7 @@ import {
 import { executeSorting } from '../algorithms/sorting';
 import { executeSearch } from '../algorithms/searching';
 import { SystemLogPanel } from '../components/SystemLogPanel';
+import { isAdmin } from '../lib/auth';
 import { EventCard } from '../components/EventCard';
 import { Search, RotateCcw } from 'lucide-react';
 
@@ -392,13 +393,15 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({
 
       </section>
 
-      {/* SINGLE INTEGRATED SYSTEM LOG PANEL */}
-      <SystemLogPanel
-        logs={systemLogs}
-        activeAction={activeAction}
-        summaryStats={summaryStats}
-        onClearLogs={() => setSystemLogs([])}
-      />
+      {/* PANEL LOG SISTEM: hanya tampil untuk admin */}
+      {isAdmin() && (
+        <SystemLogPanel
+          logs={systemLogs}
+          activeAction={activeAction}
+          summaryStats={summaryStats}
+          onClearLogs={() => setSystemLogs([])}
+        />
+      )}
 
       {/* EVENT CARDS GRID */}
       <section className="space-y-4">
